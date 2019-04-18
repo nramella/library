@@ -6,17 +6,19 @@ const table = document.getElementById('library-table');
 
 let myLibrary = []; // Library array to hold current books
 
-function Book(title, author) {
+// Book constructor
+function Book(title, author, status) {
     this.title = title;
     this.author = author;
+    this.status = status
     this.getInfo = function() {
-        return title, author;
+        return title, author, status;
     }
 }
 
 // Adds book to the library array, then renders the book
-function addBookToLibrary(title, author) {
-    const newBook = new Book(title, author);
+function addBookToLibrary(title, author, status) {
+    const newBook = new Book(title, author, status);
     myLibrary.push(newBook);
     render(newBook);
 
@@ -27,15 +29,18 @@ function render(book) {
     const row = document.createElement('tr');
     const titleTD = document.createElement('td');
     const authorTD = document.createElement('td');
+    const statusTD = document.createElement('td');
     const deleteTD = document.createElement('td');
     const deleteBtn = document.createElement('input');
     deleteBtn.type = "button";
     deleteBtn.value = "Delete";
+    deleteBtn.setAttribute("class", "deleteBtn")
     deleteBtn.setAttribute("id", myLibrary.length-1);
     // deleteRender.setAttribute("onClick", "deleteBook(this.id);");
 
     titleTD.innerHTML = book.title;
     authorTD.innerHTML = book.author;
+    statusTD.innerHTML = book.status;
 
     deleteBtn.addEventListener('click', function(){
         row.remove();
@@ -45,6 +50,7 @@ function render(book) {
 
     row.appendChild(titleTD);
     row.appendChild(authorTD);
+    row.appendChild(statusTD);
     deleteTD.appendChild(deleteBtn);
     row.appendChild(deleteTD);
     table.appendChild(row);
@@ -64,14 +70,15 @@ function checkDisplayForm() {
 function getNewBook() {
     const inputTitle = document.getElementById('inputTitle');
     const inputAuthor = document.getElementById('inputAuthor');
-    addBookToLibrary(inputTitle.value, inputAuthor.value);
+    const inputStatus = document.getElementById('read-status');
+    addBookToLibrary(inputTitle.value, inputAuthor.value, inputStatus.value);
     inputTitle.value = '';
     inputAuthor.value = '';
     checkDisplayForm();
 }
 
 
-addBookToLibrary('Memory Man', 'David Baldacci'); // Sample book (Testing Only - will be removed)
+addBookToLibrary('Memory Man', 'David Baldacci', 'Read'); // Sample book (Testing Only - will be removed)
 
 
 // Listeners //

@@ -14,9 +14,19 @@
         <button id="newBookBtn">Add new book</button>
     </div>
     <div id="newBookForm">
+        <div id="text-inputs">
             <p>Book Title: <input type="text" id="inputTitle"></p>
             <p>Author: <input type="text" id="inputAuthor"></p>
-            <button id="submit">Add</button>
+        </div>
+        <div id="status-choice">
+            <p>Status:</p>
+            <select id="read-status">
+                <option id="read" value="Read">Read</option>
+                <option id="not-read" value="Currently Reading">Currently Reading</button>
+                <option id="want-to-read" value="Want to Read">Want to Read</button>
+            </select>
+        </div>
+        <button id="submit">Add</button>
     </div>
     <div id="form">
 
@@ -26,6 +36,7 @@
             <tr id="header">
                 <th>Book</th>
                 <th>Author</th>
+                <th>Status</th>
                 <th>Delete</th>
             </tr>
         </table>
