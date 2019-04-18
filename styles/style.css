@@ -11,7 +11,14 @@ button {
     margin: 15px;
 }
 
-.row {
-    margin: 5px;
-    color: blue;
+
+table {
+    border-collapse: collapse;
+    width: 50%;
+}
+
+th, td {
+    border: 1px solid;
+    padding: 5px;
+    text-align: left;
 }
