@@ -45,7 +45,6 @@ function render(book) {
     deleteBtn.addEventListener('click', function(){
         row.remove();
         myLibrary.splice(this.id, 1);
-        console.log(myLibrary.length)
     });
 
     row.appendChild(titleTD);
@@ -60,9 +59,10 @@ function render(book) {
 function checkDisplayForm() {
     if (form.style.display === "none"){
         form.style.display = "block";
+        document.getElementById('newBookBtn').innerHTML = "Close";
     } else {
         form.style.display = "none";
-
+        document.getElementById('newBookBtn').innerHTML = "Add New Book";
     }
 }
 
