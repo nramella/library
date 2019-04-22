@@ -9,43 +9,43 @@
     <link rel="Stylesheet" href="styles/style.css"></link>
 </head>
 <body>
-    <h1>Library</h1>
-    <div id="buttons">
-        <button id="newBookBtn">Add New Book</button>
-    </div>
-    <div id="newBookForm">
-        <div id="text-inputs">
-            <p>Book Title: <input type="text" id="inputTitle"></p>
-            <p>Author: <input type="text" id="inputAuthor"></p>
+    <div class="container">
+        <h1>Library</h1>
+        <div id="buttons">
+            <button id="newBookBtn">Add New Book</button>
         </div>
-        <div id="status-choice">
-            <p>Status:</p>
-            <select id="read-status">
-                <option id="read" value="Read">Read</option>
-                <option id="not-read" value="Currently Reading">Currently Reading</button>
-                <option id="want-to-read" value="Want to Read">Want to Read</button>
-            </select>
+        <div id="newBookForm">
+            <div id="text-inputs">
+                <p>Book Title: <input type="text" id="inputTitle"></p>
+                <p>Author: <input type="text" id="inputAuthor"></p>
+                <p>Status:</p>
+                <select id="read-status">
+                    <option id="read" value="Read">Read</option>
+                    <option id="not-read" value="Currently Reading">Currently Reading</button>
+                    <option id="want-to-read" value="Want to Read">Want to Read</button>
+                </select>
+                <button id="submit">Add</button>
+            </div>
         </div>
-        <button id="submit">Add</button>
-    </div>
-    <div id="form">
+        <div id="form">
 
-    </div>
-    <div>
-        <table id=library-table>
-            <tr id="header">
-                <th>Book</th>
-                <th>Author</th>
-                <th>Status</th>
-                <th>Delete</th>
-            </tr>
-        </table>
-    </div>
-    <div id="libraryList">
+        </div>
+        <div id="library">
+            <table id=library-table>
+                <tr id="header">
+                    <th class="book">Book</th>
+                    <th class="author">Author</th>
+                    <th class="status">Status</th>
+                    <th class="delete">Delete</th>
+                </tr>
+            </table>
+        </div>
+        <div id="libraryList">
 
+        </div>
     </div>
-
 
     <script src="scripts/script.js"></script>
+
 </body>
 </html>

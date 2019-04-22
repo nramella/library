@@ -26,12 +26,19 @@ function addBookToLibrary(title, author, status) {
 
 // Renders the library onto the screen in a table
 function render(book) {
+    // Assign variables for created elements
     const row = document.createElement('tr');
     const titleTD = document.createElement('td');
     const authorTD = document.createElement('td');
     const statusTD = document.createElement('td');
     const deleteTD = document.createElement('td');
     const deleteBtn = document.createElement('input');
+
+    // Assign attritbutes
+    titleTD.setAttribute("class", "book");
+    authorTD.setAttribute("class", "author");
+    statusTD.setAttribute("class", "status");
+    deleteTD.setAttribute("class", "delete");
     deleteBtn.type = "button";
     deleteBtn.value = "Delete";
     deleteBtn.setAttribute("class", "deleteBtn")
