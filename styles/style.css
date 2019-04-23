@@ -24,56 +24,61 @@ p {
 }
 
 button {
+    width: 130px;
     font-size: 12pt;
-    border: 2px solid #2196F3;
-    background-color: white;
-    color: #2196F3;
+    padding: 5px;
+    border: 2px solid;
+    background-color: #2196F3;
+    color: white;
 }
 
 button:hover {
-    background-color: #2196F3;
+    background-color: #0084f0;
     color: white;
+    font-weight: bold;
 }
 
 #submit {
     margin-left: 20px;
 }
 
-.statusBtn {
-    font-size: 10pt;
-    border: 2px solid #01ce0c;
-    background-color: white;
-    color: #01ce0c;
-}
-
-.statusBtn:hover {
-    background-color: #01ce0c;
-    color: white;
-}
-
-.deleteBtn {
-    font-size: 10pt;
-    border: 2px solid #fa2828;
-    background-color: white;
-    color: #fa2828;
-}
-
-.deleteBtn:hover {
-    background-color: #fa2828;
-    color: white;
-}
-
 #library {
     margin-top: 10px;
-}
-
-#libraryList {
-    margin: 20px;
 }
 
 table {
     border-collapse: collapse;
     width: 100%;
+}
+
+.statusBtn {
+    font-size: 11pt;
+    min-width: 70px;
+    padding: 5px;
+    border: 2px solid;
+    background-color: #01ce0c;
+    color: white;
+}
+
+.statusBtn:hover {
+    background-color: #00b609;
+    color: white;
+    font-weight: bold;
+}
+
+.deleteBtn {
+    width: 70px;
+    font-size: 11pt;
+    padding: 5px;
+    border: 2px solid;
+    background-color: #fa2828;
+    color: white;
+}
+
+.deleteBtn:hover {
+    background-color: #db0000;
+    color: white;
+    font-weight: bold;
 }
 
 th, td {
@@ -87,7 +92,7 @@ th, td {
 }
 
 .status {
-    width: 15%;
+    width: 17%;
 }
 
 .delete {
