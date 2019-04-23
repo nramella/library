@@ -35,6 +35,18 @@ button:hover {
     margin-left: 20px;
 }
 
+.statusBtn {
+    font-size: 10pt;
+    border: 2px solid #01ce0c;
+    background-color: white;
+    color: #01ce0c;
+}
+
+.statusBtn:hover {
+    background-color: #01ce0c;
+    color: white;
+}
+
 .deleteBtn {
     font-size: 10pt;
     border: 2px solid #fa2828;

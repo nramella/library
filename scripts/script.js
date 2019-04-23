@@ -31,23 +31,41 @@ function render(book) {
     const titleTD = document.createElement('td');
     const authorTD = document.createElement('td');
     const statusTD = document.createElement('td');
+    const statusBtn = document.createElement("input");
     const deleteTD = document.createElement('td');
     const deleteBtn = document.createElement('input');
 
     // Assign attritbutes
     titleTD.setAttribute("class", "book");
     authorTD.setAttribute("class", "author");
+
+    // Status cell dropdown
     statusTD.setAttribute("class", "status");
+    statusBtn.type = "button";
+    statusBtn.setAttribute("class", "statusBtn")
+
+    // Delete cell button
     deleteTD.setAttribute("class", "delete");
     deleteBtn.type = "button";
     deleteBtn.value = "Delete";
     deleteBtn.setAttribute("class", "deleteBtn")
     deleteBtn.setAttribute("id", myLibrary.length-1);
-    // deleteRender.setAttribute("onClick", "deleteBook(this.id);");
 
     titleTD.innerHTML = book.title;
     authorTD.innerHTML = book.author;
-    statusTD.innerHTML = book.status;
+    statusBtn.value = book.status;
+
+    statusBtn.addEventListener('click', function(){
+        if (statusBtn.value == "Want to Read") {
+            statusBtn.value = "Currently Reading";
+        } else if (statusBtn.value == "Want to Read") {
+            statusBtn.value = "Currently Reading";
+        } else if (statusBtn.value == "Currently Reading") {
+            statusBtn.value = "Read";
+        } else {
+            statusBtn.value = "Want to Read";
+        }
+    });
 
     deleteBtn.addEventListener('click', function(){
         row.remove();
@@ -56,6 +74,7 @@ function render(book) {
 
     row.appendChild(titleTD);
     row.appendChild(authorTD);
+    statusTD.appendChild(statusBtn);
     row.appendChild(statusTD);
     deleteTD.appendChild(deleteBtn);
     row.appendChild(deleteTD);
