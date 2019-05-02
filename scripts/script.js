@@ -12,7 +12,6 @@ if (localStorage.length != 0){
     myLibrary = [];
 }
 
-
 // Book constructor
 function Book(title, author, status) {
     this.title = title;
@@ -31,6 +30,11 @@ function addBookToLibrary(title, author, status) {
 // Store the myLibrary array into local storage
 function storeData() {
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
+// Update the status value
+function updateStatus(x, status) {
+    myLibrary[x].status = status;
 }
 
 // Renders the library onto the screen in a table
@@ -59,14 +63,15 @@ function render() {
         // Status cell dropdown
         statusTD.setAttribute("class", "status");
         statusBtn.type = "button";
-        statusBtn.setAttribute("class", "statusBtn")
+        statusBtn.setAttribute("id", "statusBtn")
+        statusBtn.setAttribute("class", i);
 
         // Delete cell button
         deleteTD.setAttribute("class", "delete");
         deleteBtn.type = "button";
         deleteBtn.value = "Delete";
-        deleteBtn.setAttribute("class", "deleteBtn")
-        deleteBtn.setAttribute("id", i);
+        deleteBtn.setAttribute("id", "deleteBtn")
+        deleteBtn.setAttribute("class", i);
 
         // Populate the cells with the stored data
         titleTD.innerHTML = storedData[i].title;
@@ -84,11 +89,14 @@ function render() {
             } else {
                 statusBtn.value = "Want to Read";
             }
+            updateStatus(this.className, statusBtn.value);
+            storeData();
+            render();
         });
 
         // Delete the item from the library and render the page to update
         deleteBtn.addEventListener('click', function(){
-            myLibrary.splice(this.id, 1);
+            myLibrary.splice(this.className, 1);
             storeData();
             render();
         });
@@ -101,7 +109,7 @@ function render() {
         deleteTD.appendChild(deleteBtn);
         row.appendChild(deleteTD);
         table.appendChild(row);
-};
+    };
 }
 
 // Controls when the form is displayed 

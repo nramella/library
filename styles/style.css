@@ -52,7 +52,7 @@ table {
     font-size: 12pt;
 }
 
-.statusBtn {
+#statusBtn {
     font-size: 11pt;
     min-width: 70px;
     padding: 5px;
@@ -61,13 +61,13 @@ table {
     color: white;
 }
 
-.statusBtn:hover {
+#statusBtn:hover {
     background-color: #00b609;
     color: white;
     font-weight: bold;
 }
 
-.deleteBtn {
+#deleteBtn {
     width: 70px;
     font-size: 11pt;
     padding: 5px;
@@ -76,7 +76,7 @@ table {
     color: white;
 }
 
-.deleteBtn:hover {
+#deleteBtn:hover {
     background-color: #db0000;
     color: white;
     font-weight: bold;
