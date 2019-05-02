@@ -2,83 +2,106 @@
 const newBookBtn = document.getElementById('newBookBtn');
 const form = document.getElementById('newBookForm')
 const submitBtn = document.getElementById('submit')
-const table = document.getElementById('library-table');
+const table = document.getElementById('tbody');
 
-let myLibrary = []; // Library array to hold current books
+// Checks if local storage contains any data
+if (localStorage.length != 0){
+    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+    render();
+} else {
+    myLibrary = [];
+}
+
 
 // Book constructor
 function Book(title, author, status) {
     this.title = title;
     this.author = author;
     this.status = status
-    this.getInfo = function() {
-        return title, author, status;
-    }
 }
 
 // Adds book to the library array, then renders the book
 function addBookToLibrary(title, author, status) {
     const newBook = new Book(title, author, status);
     myLibrary.push(newBook);
-    render(newBook);
+    storeData();
+    render();
+}
 
+// Store the myLibrary array into local storage
+function storeData() {
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
 }
 
 // Renders the library onto the screen in a table
-function render(book) {
-    // Assign variables for created elements
-    const row = document.createElement('tr');
-    const titleTD = document.createElement('td');
-    const authorTD = document.createElement('td');
-    const statusTD = document.createElement('td');
-    const statusBtn = document.createElement("input");
-    const deleteTD = document.createElement('td');
-    const deleteBtn = document.createElement('input');
+function render() {
+    // Clear the current library table
+    table.innerHTML = '';
 
-    // Assign attritbutes
-    titleTD.setAttribute("class", "book");
-    authorTD.setAttribute("class", "author");
+    // Retrieve data from local storage
+    storedData = JSON.parse(localStorage.getItem("myLibrary"));
 
-    // Status cell dropdown
-    statusTD.setAttribute("class", "status");
-    statusBtn.type = "button";
-    statusBtn.setAttribute("class", "statusBtn")
+    // Render the complete library table
+    for(var i=0; i<storedData.length; i++) {
+        // Assign variables for created elements
+        const row = document.createElement('tr');
+        const titleTD = document.createElement('td');
+        const authorTD = document.createElement('td');
+        const statusTD = document.createElement('td');
+        const statusBtn = document.createElement("input");
+        const deleteTD = document.createElement('td');
+        const deleteBtn = document.createElement('input');
 
-    // Delete cell button
-    deleteTD.setAttribute("class", "delete");
-    deleteBtn.type = "button";
-    deleteBtn.value = "Delete";
-    deleteBtn.setAttribute("class", "deleteBtn")
-    deleteBtn.setAttribute("id", myLibrary.length-1);
+        // Assign attritbutes
+        titleTD.setAttribute("class", "book");
+        authorTD.setAttribute("class", "author");
 
-    titleTD.innerHTML = book.title;
-    authorTD.innerHTML = book.author;
-    statusBtn.value = book.status;
+        // Status cell dropdown
+        statusTD.setAttribute("class", "status");
+        statusBtn.type = "button";
+        statusBtn.setAttribute("class", "statusBtn")
 
-    statusBtn.addEventListener('click', function(){
-        if (statusBtn.value == "Want to Read") {
-            statusBtn.value = "Currently Reading";
-        } else if (statusBtn.value == "Want to Read") {
-            statusBtn.value = "Currently Reading";
-        } else if (statusBtn.value == "Currently Reading") {
-            statusBtn.value = "Read";
-        } else {
-            statusBtn.value = "Want to Read";
-        }
-    });
+        // Delete cell button
+        deleteTD.setAttribute("class", "delete");
+        deleteBtn.type = "button";
+        deleteBtn.value = "Delete";
+        deleteBtn.setAttribute("class", "deleteBtn")
+        deleteBtn.setAttribute("id", i);
 
-    deleteBtn.addEventListener('click', function(){
-        row.remove();
-        myLibrary.splice(this.id, 1);
-    });
+        // Populate the cells with the stored data
+        titleTD.innerHTML = storedData[i].title;
+        authorTD.innerHTML = storedData[i].author;
+        statusBtn.value = storedData[i].status;
 
-    row.appendChild(titleTD);
-    row.appendChild(authorTD);
-    statusTD.appendChild(statusBtn);
-    row.appendChild(statusTD);
-    deleteTD.appendChild(deleteBtn);
-    row.appendChild(deleteTD);
-    table.appendChild(row);
+        // Change read status button value after click
+        statusBtn.addEventListener('click', function(){
+            if (statusBtn.value == "Want to Read") {
+                statusBtn.value = "Currently Reading";
+            } else if (statusBtn.value == "Want to Read") {
+                statusBtn.value = "Currently Reading";
+            } else if (statusBtn.value == "Currently Reading") {
+                statusBtn.value = "Read";
+            } else {
+                statusBtn.value = "Want to Read";
+            }
+        });
+
+        // Delete the item from the library and render the page to update
+        deleteBtn.addEventListener('click', function(){
+            myLibrary.splice(this.id, 1);
+            storeData();
+            render();
+        });
+
+        // Append created elements to the table
+        row.appendChild(titleTD);
+        row.appendChild(authorTD);
+        statusTD.appendChild(statusBtn);
+        row.appendChild(statusTD);
+        deleteTD.appendChild(deleteBtn);
+        row.appendChild(deleteTD);
+        table.appendChild(row);
+};
 }
 
 // Controls when the form is displayed 
@@ -102,10 +125,6 @@ function getNewBook() {
     inputAuthor.value = '';
     checkDisplayForm();
 }
-
-
-addBookToLibrary('Memory Man', 'David Baldacci', 'Read'); // Sample book (Testing Only - will be removed)
-
 
 // Listeners //
 window.onload = function() {

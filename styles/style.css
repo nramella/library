@@ -49,6 +49,7 @@ button:hover {
 table {
     border-collapse: collapse;
     width: 100%;
+    font-size: 12pt;
 }
 
 .statusBtn {
@@ -85,6 +86,11 @@ th, td {
     border: 1px solid black;
     padding: 5px;
     text-align: left;
+}
+
+th {
+    background-color: darkgrey;
+    font-size: 14pt;
 }
 
 .book, .author {
