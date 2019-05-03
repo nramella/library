@@ -56,7 +56,7 @@ table {
     font-size: 11pt;
     min-width: 70px;
     padding: 5px;
-    border: 2px solid;
+    border: 2px;
     background-color: #01ce0c;
     color: white;
 }
@@ -71,7 +71,7 @@ table {
     width: 70px;
     font-size: 11pt;
     padding: 5px;
-    border: 2px solid;
+    border: 2px;
     background-color: #fa2828;
     color: white;
 }
@@ -89,8 +89,12 @@ th, td {
 }
 
 th {
-    background-color: darkgrey;
+    background-color: #949494;
     font-size: 14pt;
+}
+
+td {
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .book, .author {
