@@ -4,7 +4,7 @@ html {
 }
 
 .container {
-    width: 960px;
+    width: 1080px;
     margin: 0 auto;
 }
 
@@ -52,11 +52,16 @@ table {
     font-size: 12pt;
 }
 
-#statusBtn {
+#statusBtn, #deleteBtn {
+    display: block;
+    margin: auto;
     font-size: 11pt;
-    min-width: 70px;
     padding: 5px;
     border: 2px;
+}
+
+#statusBtn {
+    min-width: 70px;
     background-color: #01ce0c;
     color: white;
 }
@@ -70,8 +75,6 @@ table {
 #deleteBtn {
     width: 70px;
     font-size: 11pt;
-    padding: 5px;
-    border: 2px;
     background-color: #fa2828;
     color: white;
 }
@@ -94,17 +97,22 @@ th {
 }
 
 td {
+    font-size: 14pt;
     font-family: 'Courier New', Courier, monospace;
 }
 
-.book, .author {
-    width: 30%;
+.book {
+    width: 35%;
+}
+
+.author {
+    width: 25%;
 }
 
 .status {
-    width: 17%;
+    width: 14%;
 }
 
 .delete {
-    width: 8%;
+    width: 4%;
 }
