@@ -56,11 +56,6 @@ function render() {
         const deleteTD = document.createElement('td');
         const deleteBtn = document.createElement('input');
 
-        // Set alternating background color for each row
-        if (i%2 != 0) {
-            row.setAttribute("style", "background-color: #dddddd");
-        }
-
         // Assign attritbutes
         titleTD.setAttribute("class", "book");
         authorTD.setAttribute("class", "author");
