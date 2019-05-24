@@ -1,7 +1,7 @@
 html {
     margin: 0;
     padding: 0;
-    background-color: #1E262E;
+    background-color: #2d3b47;
 }
 
 .container {
@@ -17,6 +17,12 @@ h1 {
 #text-inputs, #status-choice {
     margin: 10px;
     padding: 20px;
+}
+
+input {
+    width: 200px;
+    border: 1pt solid #000000;
+    font-size: 12pt;
 }
 
 p {
@@ -67,7 +73,6 @@ table {
 
 #statusBtn {
     min-width: 140px;
-    font-size: 11pt;
     background-color: #49a159;
     color: white;
 }
@@ -80,7 +85,6 @@ table {
 
 #deleteBtn {
     width: 70px;
-    font-size: 11pt;
     background-color: #f44336;
     color: white;
 }
@@ -121,5 +125,5 @@ td {
 }
 
 .delete {
-    width: 4%;
+    width: 5%;
 }
